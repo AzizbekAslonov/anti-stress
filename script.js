@@ -16,7 +16,7 @@ document.addEventListener("mousemove", (e) => {
   mouse.x = e.x;
   mouse.y = e.y;
 
-  for (let i = 0; i < 1; i++) {
+  for (let i = 0; i < 2; i++) {
     particlesArr.push(new Particle());
   }
 });
@@ -26,8 +26,8 @@ class Particle {
     this.x = mouse.x;
     this.y = mouse.y;
     this.size = Math.random() * 5 + 1;
-    this.speedX = Math.random() * 6 - 3;
-    this.speedY = Math.random() * 6 - 3;
+    this.speedX = Math.random() * 5 - 2.5;
+    this.speedY = Math.random() * 5 - 2.5;
     this.color = `hsl(${hue}, 100%, 50%)`;
   }
 
@@ -43,7 +43,7 @@ class Particle {
       this.speedY = -this.speedY;
     }
 
-    if (this.size > 1) this.size -= 0.005;
+    if (this.size > 1) this.size -= 0.015;
   }
 
   draw() {
@@ -88,10 +88,10 @@ function handleParticles() {
 handleParticles();
 
 function animate() {
-  ctx.fillStyle = "rgba(0,0,0,0.2)";
+  ctx.fillStyle = "rgba(0,0,0,0.1)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   handleParticles();
-  hue += 0.5;
+  hue += 0.3;
   requestAnimationFrame(animate);
 }
 
